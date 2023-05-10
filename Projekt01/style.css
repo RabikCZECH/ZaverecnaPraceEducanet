@@ -1,0 +1,403 @@
+.box {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  animation-name: move-grow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes move-grow {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(100px) translateY(50px) scale(1.5);
+  }
+  100% {
+    transform: translateX(200px) translateY(0) scale(1);
+  }
+}
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  background: linear-gradient(to bottom right, #f00, #ff0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Definice proměnných pro barvy */
+:root {
+  --primary-color: #4286f4;
+  --secondary-color: #f4a442;
+  --background-color: #f4f4f4;
+}
+
+/* Použití proměnných pro barvy */
+body {
+  background-color: var(--background-color);
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+h2 {
+  color: var(--secondary-color);
+}
+
+/* Definice proměnných pro velikosti nadpisů */
+:root {
+  --h1-font-size: 3rem;
+  --h2-font-size: 2rem;
+}
+
+/* Použití proměnných pro velikosti nadpisů */
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* 6-12 sloupců na PC */
+  grid-template-rows: repeat(3, minmax(50px, 1fr)); /* 3 řádky na PC */
+  grid-gap: 10px; /* mezery mezi prvky */
+  align-items: center; /* zarovnání obsahu vertikálně */
+  justify-items: center; /* zarovnání obsahu horizontálně */
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr)); /* 3-6 sloupců na mobilu */
+    grid-template-rows: repeat(2, minmax(50px, 1fr)); /* 2 řádky na mobilu */
+  }
+}
+
+.title {
+  grid-area: 2 / 1 / 4 / -1; /* zabírá 2-4 řádek a všechny sloupce */
+  text-align: center; /* zarovnání textu na střed */
+}
+
+.icon {
+  grid-area: 1 / span 1 / 2 / span 1; /* zabírá 1. řádek a 1 sloupec */
+  margin: 0 10px; /* mezery kolem ikon */
+  text-align: center; /* zarovnání ikon na střed */
+}
+
+.icon:nth-of-type(2) {
+  grid-column: 5 / span 2; /* zabírá 5. až 6. sloupec na PC */
+}
+
+@media screen and (max-width: 767px) {
+  .icon:nth-of-type(2) {
+    grid-column: 2 / span 1; /* zabírá 2. sloupec na mobilu */
+    grid-row: 2 / span 1; /* zabírá 2. řádek na mobilu */
+  }
+}
+
+.icon:last-of-type {
+  grid-area: 1 / -1 / 2 / -1; /* zabírá 1. řádek a všechny sloupce */
+  margin-right: 0; /* odstranění pravé mezery */
+  text-align: right; /* zarovnání ikony na pravou stranu */
+}
+
+@media screen and (max-width: 767px) {
+  .icon:last-of-type {
+    grid-column: 1 / span 1; /* zabírá 1. sloupec na mobilu */
+    grid-row: 2 / span 1; /* zabírá 2. řádek na mobilu */
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* minimální šířka sloupce 200px, maximální rovnoměrně rozděleno podle dostupného prostoru */
+  grid-gap: 10px; /* mezery mezi obrázky */
+}
+
+/* Nastavení jednotlivých obrázků */
+.gallery img {
+  width: 100%; /* obrázek má stejnou šířku jako jeho rodičovský prvek */
+  height: auto; /* výška se automaticky přizpůsobí šířce */
+}
+
+/* V mobilní verzi nastavíme všechny obrázky stejně velké */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* maximálně 2 sloupce */
+    grid-auto-rows: 150px; /* výška řádku */
+  }
+}
+
+div {
+  background-image: url("obrazek.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media only screen and (max-width: 768px) {
+  div {
+    background-image: url("obrazek-mobilni.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+input[type="email"],
+input[type="submit"] {
+  font-size: 1.2em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  width: 100%;
+}
+
+input[type="email"]:focus {
+  outline: 2px solid #008080;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+button {
+  color: #ffffff;
+  background: #4B6289;
+  border: none;
+  padding: 7px 10px;
+  width: 15%;
+  height: 100%
+}
+.navigation {
+  background-color: #000;
+}
+.nav-button {
+  text-align: left;
+  background-color: #000;
+
+}
+button:hover {
+  background: #000000;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px;
+  border-bottom: 1px solid #dddddd;
+}
+
+a:hover {
+  color: #52bdc1;
+}
+
+.nav-items {
+  display: none;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-items.opened {
+  display: block;
+}
+
+.menu .logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu .nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-basis: 50%;
+}
+
+.menu .nav-links li {
+  margin-left: 20px;
+}
+
+.menu .nav-links li:first-child {
+  margin-left: 0;
+}
+
+.menu .nav-links li a {
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  padding: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .menu .nav-links {
+    justify-content: space-between;
+  }
+  
+  .menu .logo {
+    margin-bottom: 20px;
+  }
+  
+  .menu .nav-links li {
+    margin: 0;
+  }
+  
+  .menu .nav-links li:first-child {
+    margin-top: 20px;
+  }
+}
+
+.hero {
+  background-color: #f8f8f8;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.icon-left {
+  position: absolute;
+  left: 20px;
+  font-size: 2rem;
+}
+
+.icon-center {
+  font-size: 3rem;
+}
+
+.icon-right {
+  position: absolute;
+  right: 20px;
+  font-size: 2rem;
+}
+
+.hero-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #999;
+  }
+  
+  nav a.active {
+    color: #999;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;     
+    width: 100%;
+    z-index: 999;
+    /* styly */
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  main {
+    max-width: 1000px;
+  }
+  section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section div {
+    flex: 1 1 25%;
+    margin: 10px;
+  }
+  section div img {
+    width: 40%;
+  }
+  section div:last-child {
+    padding-left: 20px;
+  }
